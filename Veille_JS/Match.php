@@ -76,19 +76,30 @@
 
                 // console.log(psgMatch);
              
-                psgMatch.forEach(element => {
-                    console.log(element);
-                    const matchLi = document.createElement('p');
-                    document.body.appendChild(matchLi);
-                    matchLi.innerText = `${element.domicile.equipe} vs ${element.exterieur.equipe} ${element.domicile.score}-${element.exterieur.score}`;
-                   if (element.domicile.score > element.exterieur.score) {
-                    matchLi.innerHTML = `<strong>${element.domicile.equipe}</strong> vs ${element.exterieur.equipe} <strong>${element.domicile.score}</strong>-${element.exterieur.score}`;
-                   }else{
-                    matchLi.innerHTML = `${element.domicile.equipe} vs <strong>${element.exterieur.equipe}</strong> ${element.domicile.score}- <strong>${element.exterieur.score}</strong>`;
-                   }
-                });
+                // psgMatch.forEach(element => {
+                //     console.log(element);
+                //     const matchLi = document.createElement('p');
+                //     document.body.appendChild(matchLi);
+                //     matchLi.innerText = `${element.domicile.equipe} vs ${element.exterieur.equipe} ${element.domicile.score}-${element.exterieur.score}`;
+                //    if (element.domicile.score > element.exterieur.score) {
+                //     matchLi.innerHTML = `<strong>${element.domicile.equipe}</strong> vs ${element.exterieur.equipe} <strong>${element.domicile.score}</strong>-${element.exterieur.score}`;
+                //    }else{
+                //     matchLi.innerHTML = `${element.domicile.equipe} vs <strong>${element.exterieur.equipe}</strong> ${element.domicile.score}- <strong>${element.exterieur.score}</strong>`;
+                //    }
+                // });
+                    const elem = document.getElementById('div');
+                    elem.innerText = 'MWONE';
+                    elem.addEventListener('click',function click() {
+                        elem.style.color = 'blue';
+                        elem.innerHTML = 'CLICK';
+                        alert('CLICK');
+                    });
 
-                    // titleConteneu = document.getElementById('title');
+                        elem.addEventListener('mousemove', function(event) {
+                            const x = event.offsetX; // Coordonnée X de la souris dans l'élément
+                            const y = event.offsetY; // Coordonnée Y de la souris dans l'élément
+                         });
+                            // titleConteneu = document.getElementById('title');
                     // var query = document.querySelector('title');
                     // var boss = document.getElementById('boss');
                     // boss.style.color = 'blue';
