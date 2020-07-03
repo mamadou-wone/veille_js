@@ -154,4 +154,67 @@
 // let sumValue = sumNumber(1);
 // console.log(sumValue);
 
-// ******************************* LES TABLEAUX **********************************************
+// ******************************* LES FONCTIONS FLECHE **********************************************
+
+
+// let maFonction = () => {
+//     console.log('test');
+// }
+
+// let maFonction = () => console.log('test');
+
+// maFonction();
+
+// *******************************LE POTENTIEL DE JAVASCRIPT****************************
+
+// let chien = {
+//     race: 'shiba',
+//     poil: 'cout',
+//     aboyer: () => console.log('Je suis un chien qui aboie')
+// }
+
+// console.log(chien);
+// chien.aboyer();
+
+
+// ****OBJET SET
+
+// let nombre = [10, 20, 30];
+// let monSet = new Set();
+// monSet.add('12');
+
+// console.log(monSet.size);
+
+
+// Objet MAP*********
+
+// let maMap = new Map([
+//     ['prenom', 'Mamadou'],
+//     ['nom', 'WONE']
+// ]);
+
+// console.log(maMap);
+
+// let myMap = new Map();
+
+// myMap.set('Boss', {
+//     email: 'boss@tech.com',
+//     poste: 'PDG'
+// });
+
+// console.log(myMap);
+
+// Objet WEAKSET*********
+
+function addition(...nombre) {
+    let sum = 0;
+    nombre.forEach(nombre => {
+        // console.log(nombre);
+        sum += nombre;
+    });
+    return sum;
+}
+
+
+let sumValue = addition(12, 15, 6, 100);
+console.log(sumValue);
