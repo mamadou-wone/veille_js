@@ -206,15 +206,17 @@
 
 // Objet WEAKSET*********
 
-function addition(...nombre) {
-    let sum = 0;
-    nombre.forEach(nombre => {
-        // console.log(nombre);
-        sum += nombre;
-    });
-    return sum;
-}
+// function addition(...nombre) {
+//     let sum = 0;
+//     nombre.forEach(nombre => {
+//         // console.log(nombre);
+//         sum += nombre;
+//     });
+//     return sum;
+// }
 
 
-let sumValue = addition(12, 15, 6, 100);
-console.log(sumValue);
+// let sumValue = addition(12, 15, 6, 100);
+// console.log(sumValue);
+
+// window.open();
