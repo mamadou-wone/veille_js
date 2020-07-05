@@ -220,3 +220,14 @@
 // console.log(sumValue);
 
 // window.open();
+// console.log('boss');
+
+let header = document.createElement('header');
+let headerContainer = document.createElement('div');
+header.textContent = 'BIENVENU';
+header.style.textAlign = 'center';
+header.style.padding = '40px';
+headerContainer.style.backgroundColor = '#e3b04b';
+headerContainer.style.height = '100px';
+headerContainer.append(header);
+document.body.append(headerContainer);
