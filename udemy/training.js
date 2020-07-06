@@ -222,12 +222,63 @@
 // window.open();
 // console.log('boss');
 
-let header = document.createElement('header');
-let headerContainer = document.createElement('div');
-header.textContent = 'BIENVENU';
-header.style.textAlign = 'center';
-header.style.padding = '40px';
-headerContainer.style.backgroundColor = '#e3b04b';
-headerContainer.style.height = '100px';
-headerContainer.append(header);
-document.body.append(headerContainer);
+// let header = document.createElement('header');
+// let headerContainer = document.createElement('div');
+// header.textContent = 'BIENVENU';
+// header.style.textAlign = 'center';
+// header.style.padding = '40px';
+// headerContainer.style.backgroundColor = '#e3b04b';
+// headerContainer.style.height = '100px';
+// headerContainer.append(header);
+// document.body.append(headerContainer);
+
+// *************************LES EVENEMENTS***************************************
+
+// let a = document.querySelector('a');
+// a.onclick = () => {
+//     if (confirm('Voulez vous continuer')) {
+//         location.href = 'https://www.udemy.com/';
+//     }
+// }
+
+
+// button.onmouseover = () => {
+//     document.body.style.backgroundColor = 'orange';
+
+//     button.onmouseout = () => {
+//         document.body.style.backgroundColor = 'white';
+//     }
+// }
+
+// let button = document.querySelector('button');
+// button.addEventListener('mouseover', () => {
+//     document.body.style.backgroundColor = 'orange';
+
+//     button.addEventListener('mouseout', () => {
+//         document.body.style.backgroundColor = 'white';
+//     });
+// })
+let number = 10;
+let button = document.querySelector('button');
+let secondContainer = document.getElementById('contain');
+let timer;
+button.addEventListener('click', () => {
+    timer = setInterval("decompte()", 1000);
+});
+
+function stop() {
+    clearTimeout(timer);
+}
+
+function decompte() {
+    number--;
+    let secondValue = document.createElement('p');
+    secondValue.textContent = number;
+    secondContainer.append(secondValue);
+    if (number === 0) {
+        number = 10;
+        stop();
+        secondValue.textContent = 'stop!';
+    }
+
+}
