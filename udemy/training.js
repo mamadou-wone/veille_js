@@ -351,72 +351,136 @@
 //     author.innerHTML = `${citations[citationIndex][1]}`;
 // });
 
-let input = document.getElementById('prix');
+
+// let input = document.getElementById('prix');
+// let formulaire = document.getElementById('formulaire');
+// let error = document.querySelector('small');
+
+// // error.innerHTML = null;
+// error.style.display = "none";
+
+// // Génération d'un nombre aléatoire
+
+// function getRand(rand) {
+//     return Math.floor((Math.random() * Math.floor(rand)));
+// }
+
+
+// let nombreAleatoire = getRand(1001);
+// let nombreChoisi;
+// let coup = 0;
+// let instructions = document.getElementById('instructions');
+
+
+// function verifier(number) {
+//     let instruction = document.createElement('div');
+//     if (number < nombreAleatoire) {
+//         instruction.innerText = 'Plus Grand';
+//         instruction.className = 'plus';
+//         // instructions.append(instruction);
+//         console.log('Plus grand');
+//     } else if (number > nombreAleatoire) {
+//         console.log('Plus petit');
+//         instruction.innerText = 'Plus Petit';
+//         instruction.className = 'moins';
+//         // instructions.append(instruction);
+
+//     } else {
+//         instruction.innerText = 'Bravo Félicitation :)';
+//         instruction.className = 'fini';
+//         input.disabled = true;
+//         // input.style = 'deseabled';
+//         console.log('Bravo');
+//     }
+//     instructions.prepend(instruction);
+// }
+
+// // console.log(nombreAleatoire);
+
+// // Vérifiez si le user donne bien un nombre
+// input.addEventListener('keyup', () => {
+//     if (isNaN(input.value)) {
+//         error.style.display = "contents";
+//     } else {
+//         error.style.display = "none";
+//     }
+
+// });
+
+// // Traitement du formulaire
+
+// formulaire.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     if (isNaN(input.value) || input.value == '') {
+//         input.style.borderColor = "red";
+//     } else {
+//         input.style.borderColor = "silver";
+//         coup++;
+//         nombreChoisi = input.value;
+//         input.value = '';
+//         verifier(nombreChoisi);
+//     }
+// })
+
+let price = document.getElementById('prix');
 let formulaire = document.getElementById('formulaire');
+let instruction = document.getElementById('instructions');
 let error = document.querySelector('small');
+let button = document.querySelector('button');
 
-// error.innerHTML = null;
 error.style.display = "none";
-
-// Génération d'un nombre aléatoire
+let coup = 0;
+let userNumber;
 
 function getRand(rand) {
-    return Math.floor((Math.random() * Math.floor(rand)));
+    return Math.floor(Math.random() * Math.floor(rand));
 }
 
-
-let nombreAleatoire = getRand(1001);
-let nombreChoisi;
-let coup = 0;
-let instructions = document.getElementById('instructions');
+let randomNumber = getRand(1001);
 
 
-function verifier(number) {
-    let instruction = document.createElement('div');
-    if (number < nombreAleatoire) {
-        instruction.innerText = 'Plus Grand';
-        instruction.className = 'plus';
-        // instructions.append(instruction);
-        console.log('Plus grand');
-    } else if (number > nombreAleatoire) {
-        console.log('Plus petit');
-        instruction.innerText = 'Plus Petit';
-        instruction.className = 'moins';
-        // instructions.append(instruction);
-
+function verify(number) {
+    if (number < randomNumber) {
+        let element = document.createElement('div');
+        element.className = 'plus';
+        element.innerHTML = "C'est Plus";
+        instruction.prepend(element);
+    } else if (number > randomNumber) {
+        let element = document.createElement('div');
+        element.className = 'moins';
+        element.innerHTML = "C'est moins";
+        instruction.prepend(element);
     } else {
-        instruction.innerText = 'Bravo Félicitation :)';
-        instruction.className = 'fini';
-        input.disabled = true;
-        // input.style = 'deseabled';
-        console.log('Bravo');
+        let element = document.createElement('div');
+        element.className = 'fini';
+        element.innerHTML = "Bravo Félicitation : )";
+        instruction.prepend(element);
+        price.disabled = true;
+        button.disabled = true;
     }
-    instructions.prepend(instruction);
+
+
 }
 
-// console.log(nombreAleatoire);
-
-// Vérifiez si le user donne bien un nombre
-input.addEventListener('keyup', () => {
-    if (isNaN(input.value)) {
+price.addEventListener('keyup', () => {
+    if (isNaN(price.value)) {
         error.style.display = "contents";
     } else {
         error.style.display = "none";
     }
-
 });
-
-// Traitement du formulaire
 
 formulaire.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (isNaN(input.value) || input.value == '') {
-        input.style.borderColor = "red";
+    if (isNaN(price.value) || price.value == '') {
+        price.style.borderColor = 'red';
     } else {
-        input.style.borderColor = "silver";
         coup++;
-        nombreChoisi = input.value;
-        input.value = '';
-        verifier(nombreChoisi);
+        price.style.borderColor = 'silver';
+        userNumber = price.value;
+        verify(userNumber);
+        price.value = '';
     }
-})
+
+
+});
