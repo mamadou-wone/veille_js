@@ -422,65 +422,127 @@
 //     }
 // })
 
-let price = document.getElementById('prix');
-let formulaire = document.getElementById('formulaire');
-let instruction = document.getElementById('instructions');
-let error = document.querySelector('small');
-let button = document.querySelector('button');
+// let price = document.getElementById('prix');
+// let formulaire = document.getElementById('formulaire');
+// let instruction = document.getElementById('instructions');
+// let error = document.querySelector('small');
+// let button = document.querySelector('button');
 
-error.style.display = "none";
-let coup = 0;
-let userNumber;
+// error.style.display = "none";
+// let coup = 0;
+// let userNumber;
 
-function getRand(rand) {
-    return Math.floor(Math.random() * Math.floor(rand));
+// function getRand(rand) {
+//     return Math.floor(Math.random() * Math.floor(rand));
+// }
+
+// let randomNumber = getRand(1001);
+
+
+// function verify(number) {
+//     if (number < randomNumber) {
+//         let element = document.createElement('div');
+//         element.className = 'plus';
+//         element.innerHTML = "C'est Plus";
+//         instruction.prepend(element);
+//     } else if (number > randomNumber) {
+//         let element = document.createElement('div');
+//         element.className = 'moins';
+//         element.innerHTML = "C'est moins";
+//         instruction.prepend(element);
+//     } else {
+//         let element = document.createElement('div');
+//         element.className = 'fini';
+//         element.innerHTML = "Bravo Félicitation : )";
+//         instruction.prepend(element);
+//         price.disabled = true;
+//         button.disabled = true;
+//     }
+
+
+// }
+
+// price.addEventListener('keyup', () => {
+//     if (isNaN(price.value)) {
+//         error.style.display = "contents";
+//     } else {
+//         error.style.display = "none";
+//     }
+// });
+
+// formulaire.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     if (isNaN(price.value) || price.value == '') {
+//         price.style.borderColor = 'red';
+//     } else {
+//         coup++;
+//         price.style.borderColor = 'silver';
+//         userNumber = price.value;
+//         verify(userNumber);
+//         price.value = '';
+//     }
+// });
+
+
+// *********************POO JAVASCRIPT******************************************
+
+function Animal(nbreDePattes, poids) {
+    this.nbreDePattes = nbreDePattes;
+    this.poids = poids;
 }
 
-let randomNumber = getRand(1001);
-
-
-function verify(number) {
-    if (number < randomNumber) {
-        let element = document.createElement('div');
-        element.className = 'plus';
-        element.innerHTML = "C'est Plus";
-        instruction.prepend(element);
-    } else if (number > randomNumber) {
-        let element = document.createElement('div');
-        element.className = 'moins';
-        element.innerHTML = "C'est moins";
-        instruction.prepend(element);
-    } else {
-        let element = document.createElement('div');
-        element.className = 'fini';
-        element.innerHTML = "Bravo Félicitation : )";
-        instruction.prepend(element);
-        price.disabled = true;
-        button.disabled = true;
-    }
-
+Animal.prototype.sePresenter = function() {
+    console.log('Je suis un animal avec ' + ' ' + this.nbreDePattes + ' pattes ' + 'et je peses ' + this.poids);
 
 }
 
-price.addEventListener('keyup', () => {
-    if (isNaN(price.value)) {
-        error.style.display = "contents";
-    } else {
-        error.style.display = "none";
+function Bird(nbreDePattes, poids, longueurDesAiles) {
+    Animal.call(this, nbreDePattes, poids);
+    this.longueurDesAiles = longueurDesAiles;
+}
+
+Bird.prototype = Object.create(Animal.prototype);
+Bird.prototype.constructor = Bird;
+
+function Mammifere(nbreDePattes, poids, typeDePoile) {
+    Animal.call(this, nbreDePattes, poids);
+    this.typeDePoile = typeDePoile;
+}
+
+Mammifere.prototype = Object.create(Animal.prototype);
+Mammifere.prototype.constructor = Mammifere;
+
+
+
+
+var cow = new Mammifere(4, '650kg', 'fisé');
+var autruche = new Bird(2, '35kg', 'tres grandes');
+
+// autruche.sePresenter();
+// console.log(autruche);
+// console.log(cow);
+
+class Animals {
+    constructor(nbreDePattes, poids) {
+        this.nbreDePattes = nbreDePattes;
+        this.poids = poids;
     }
-});
 
-formulaire.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (isNaN(price.value) || price.value == '') {
-        price.style.borderColor = 'red';
-    } else {
-        coup++;
-        price.style.borderColor = 'silver';
-        userNumber = price.value;
-        verify(userNumber);
-        price.value = '';
+    sePresenter() {
+        console.log('Je suis un animal avec ' + this.nbreDePattes + ' Pattes et je pèse ' + this.poids);
     }
+}
 
+class Birds extends Animal {
+    constructor(nbreDePattes, poids, longueurDesAiles) {
+        Animal.call(this, nbreDePattes, poids);
+        this.longueurDesAiles = longueurDesAiles;
+    }
+}
 
-});
+var horse = new Animals(4, '250kg');
+// horse.sePresenter();
+
+var chicken = new Bird(4, '3kg', 'court');
+console.log(chicken);
+chicken.sePresenter();
