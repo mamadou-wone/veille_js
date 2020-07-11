@@ -486,63 +486,66 @@
 
 // *********************POO JAVASCRIPT******************************************
 
-function Animal(nbreDePattes, poids) {
-    this.nbreDePattes = nbreDePattes;
-    this.poids = poids;
-}
+// function Animal(nbreDePattes, poids) {
+//     this.nbreDePattes = nbreDePattes;
+//     this.poids = poids;
+// }
 
-Animal.prototype.sePresenter = function() {
-    console.log('Je suis un animal avec ' + ' ' + this.nbreDePattes + ' pattes ' + 'et je peses ' + this.poids);
+// Animal.prototype.sePresenter = function() {
+//     console.log('Je suis un animal avec ' + ' ' + this.nbreDePattes + ' pattes ' + 'et je peses ' + this.poids);
 
-}
+// }
 
-function Bird(nbreDePattes, poids, longueurDesAiles) {
-    Animal.call(this, nbreDePattes, poids);
-    this.longueurDesAiles = longueurDesAiles;
-}
+// function Bird(nbreDePattes, poids, longueurDesAiles) {
+//     Animal.call(this, nbreDePattes, poids);
+//     this.longueurDesAiles = longueurDesAiles;
+// }
 
-Bird.prototype = Object.create(Animal.prototype);
-Bird.prototype.constructor = Bird;
+// Bird.prototype = Object.create(Animal.prototype);
+// Bird.prototype.constructor = Bird;
 
-function Mammifere(nbreDePattes, poids, typeDePoile) {
-    Animal.call(this, nbreDePattes, poids);
-    this.typeDePoile = typeDePoile;
-}
+// function Mammifere(nbreDePattes, poids, typeDePoile) {
+//     Animal.call(this, nbreDePattes, poids);
+//     this.typeDePoile = typeDePoile;
+// }
 
-Mammifere.prototype = Object.create(Animal.prototype);
-Mammifere.prototype.constructor = Mammifere;
-
-
+// Mammifere.prototype = Object.create(Animal.prototype);
+// Mammifere.prototype.constructor = Mammifere;
 
 
-var cow = new Mammifere(4, '650kg', 'fisé');
-var autruche = new Bird(2, '35kg', 'tres grandes');
+
+
+// var cow = new Mammifere(4, '650kg', 'fisé');
+// var autruche = new Bird(2, '35kg', 'tres grandes');
 
 // autruche.sePresenter();
 // console.log(autruche);
 // console.log(cow);
 
-class Animals {
-    constructor(nbreDePattes, poids) {
-        this.nbreDePattes = nbreDePattes;
-        this.poids = poids;
-    }
+// class Animals {
+//     constructor(nbreDePattes, poids) {
+//         this.nbreDePattes = nbreDePattes;
+//         this.poids = poids;
+//     }
 
-    sePresenter() {
-        console.log('Je suis un animal avec ' + this.nbreDePattes + ' Pattes et je pèse ' + this.poids);
-    }
-}
+//     sePresenter() {
+//         console.log('Je suis un animal avec ' + this.nbreDePattes + ' Pattes et je pèse ' + this.poids);
+//     }
+// }
 
-class Birds extends Animal {
-    constructor(nbreDePattes, poids, longueurDesAiles) {
-        Animal.call(this, nbreDePattes, poids);
-        this.longueurDesAiles = longueurDesAiles;
-    }
-}
+// class Birds extends Animal {
+//     constructor(nbreDePattes, poids, longueurDesAiles) {
+//         super(nbreDePattes, poids)
+//         this.longueurDesAiles = longueurDesAiles;
+//     }
+// }
 
-var horse = new Animals(4, '250kg');
-// horse.sePresenter();
+// var horse = new Animals(4, '250kg');
+// // horse.sePresenter();
 
-var chicken = new Bird(4, '3kg', 'court');
-console.log(chicken);
-chicken.sePresenter();
+// var chicken = new Bird(4, '3kg', 'court');
+// console.log(chicken);
+// chicken.sePresenter();
+
+let dateActuel = new Date();
+console.log(dateActuel.getDay());
