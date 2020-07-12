@@ -547,5 +547,34 @@
 // console.log(chicken);
 // chicken.sePresenter();
 
-let dateActuel = new Date();
-console.log(dateActuel.getDay());
+// let dateActuel = new Date();
+// console.log(dateActuel.getDay());
+
+// *****************************API*********************************************
+
+const apiUrl = 'https://blockchain.info/ticker';
+
+let timer = setInterval("bitcoin()", 5000);
+
+function bitcoin() {
+    // Création de la requête Ajax
+    let request = new XMLHttpRequest(); //Crée un objet
+    request.open('GET', apiUrl);
+    // TYPE DE RETOUR DE LA REQUTE
+    request.responseType = 'json';
+    request.send(); //On envoie la requete
+
+    // Des que l'on reçoit un reponse on execute une fonction
+    request.onload = function() {
+        // ON vérifie que tout c bien passé
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+                let response = request.response; //On stock la reponse
+                let prixEnEuro = response.EUR.last;
+                document.querySelector('#price_label').textContent = prixEnEuro;
+            } else {
+                alert('Une erreur s\' produite');
+            }
+        }
+    }
+}
