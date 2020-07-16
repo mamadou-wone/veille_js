@@ -658,3 +658,20 @@ changeCity.addEventListener('click', () => {
     let newCity = prompt('Changer de ville');
     getWeather(newCity);
 });
+
+
+
+// let me = new Person('boy');
+// let you = new Person('girl');
+
+// if (me.girlFriend === null && me.crushOn(you)) {
+//     try {
+//         if (me.askGirlOut(you) === 'ok') {
+//             me.happy = true;
+//         } else {
+//             me.cry();
+//         }
+//     } catch (IAlreadyHaveABoysFriendException) {
+//         me.cry();
+//     }
+// }
