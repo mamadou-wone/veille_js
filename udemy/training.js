@@ -552,29 +552,76 @@
 
 // *****************************API*********************************************
 
-const apiUrl = 'https://blockchain.info/ticker';
+// const apiUrl = 'https://blockchain.info/ticker';
 
-let timer = setInterval("bitcoin()", 5000);
+// let timer = setInterval("bitcoin()", 5000);
 
-function bitcoin() {
-    // Création de la requête Ajax
-    let request = new XMLHttpRequest(); //Crée un objet
-    request.open('GET', apiUrl);
-    // TYPE DE RETOUR DE LA REQUTE
-    request.responseType = 'json';
-    request.send(); //On envoie la requete
+// function bitcoin() {
+//     // Création de la requête Ajax
+//     let request = new XMLHttpRequest(); //Crée un objet
+//     request.open('GET', apiUrl);
+//     // TYPE DE RETOUR DE LA REQUTE
+//     request.responseType = 'json';
+//     request.send(); //On envoie la requete
 
-    // Des que l'on reçoit un reponse on execute une fonction
-    request.onload = function() {
-        // ON vérifie que tout c bien passé
-        if (request.readyState === XMLHttpRequest.DONE) {
-            if (request.status === 200) {
-                let response = request.response; //On stock la reponse
-                let prixEnEuro = response.EUR.last;
-                document.querySelector('#price_label').textContent = prixEnEuro;
-            } else {
-                alert('Une erreur s\' produite');
-            }
+//     // Des que l'on reçoit un reponse on execute une fonction
+//     request.onload = function() {
+//         // ON vérifie que tout c bien passé
+//         if (request.readyState === XMLHttpRequest.DONE) {
+//             if (request.status === 200) {
+//                 let response = request.response; //On stock la reponse
+//                 let prixEnEuro = response.EUR.last;
+//                 document.querySelector('#price_label').textContent = prixEnEuro;
+//             } else {
+//                 alert('Une erreur s\' produite');
+//             }
+//         }
+//     }
+// }
+
+// MA PROPRE REQUETE AJAX I' M SO PROUND OF ME
+// const apiUrl = 'https://blockchain.info/ticker';
+
+// setInterval(bitCoinPrice, 1000);
+
+// function bitCoinPrice() {
+//     let request = new XMLHttpRequest();
+
+//     request.open('GET', apiUrl);
+//     request.responseType = 'json';
+//     request.send();
+
+//     request.onload = function() {
+//         if (request.readyState === XMLHttpRequest.DONE) {
+//             if (request.status === 200) {
+//                 let response = request.response;
+//                 let priceEnEuro = response.EUR.last;
+//                 document.getElementById('price_label').textContent = priceEnEuro;
+//             } else {
+//                 alert('Une erreur s\'est produite');
+//             }
+//         }
+//     }
+//     console.log('Prix Actualisé');
+// }
+
+// ENVOYER DES DONNEES VERS UNE API AVEC JS POST
+const apiUrl = 'https://lesoublisdelinfo.com/api.php';
+
+let request = new XMLHttpRequest();
+request.open('POST', apiUrl);
+// ON Définit le headera à envoyer à l'API
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+request.responseType = 'json';
+request.send('prenom=Mamadou WONE');
+
+request.onload = function() {
+    if (request.readyState === XMLHttpRequest.DONE) {
+        if (request.status === 200) {
+            let response = request.response;
+            console.log(response);
+        } else {
+            alert('Une erreur s\' est produite');
         }
     }
 }
