@@ -1,3 +1,27 @@
+/* APPLI METEO */
+
+html,
+body {
+    background: #2980B9;
+    background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
+    background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
+    min-width: 400px;
+}
+
+#ville {
+    text-transform: capitalize;
+}
+
+#temperature {
+    font-size: 4em;
+}
+
+#changer {
+    background: rgba(178, 223, 251, .3);
+    cursor: pointer;
+}
+
+
 /* html,
 body {
     background: #5C258D;
@@ -71,10 +95,12 @@ header {
     background-color: #0c9463;
 } */
 
+
+/* 
 h1 {
     color: #272343;
 }
 
 #price {
     font-size: 4em;
-}
+} */
