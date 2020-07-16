@@ -606,22 +606,22 @@
 // }
 
 // ENVOYER DES DONNEES VERS UNE API AVEC JS POST
-const apiUrl = 'https://lesoublisdelinfo.com/api.php';
+// const apiUrl = 'https://lesoublisdelinfo.com/api.php';
 
-let request = new XMLHttpRequest();
-request.open('POST', apiUrl);
-// ON Définit le headera à envoyer à l'API
-request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-request.responseType = 'json';
-request.send('prenom=Mamadou WONE');
+// let request = new XMLHttpRequest();
+// request.open('POST', apiUrl);
+// // ON Définit le headera à envoyer à l'API
+// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+// request.responseType = 'json';
+// request.send('prenom=Mamadou WONE');
 
-request.onload = function() {
-    if (request.readyState === XMLHttpRequest.DONE) {
-        if (request.status === 200) {
-            let response = request.response;
-            console.log(response);
-        } else {
-            alert('Une erreur s\' est produite');
-        }
-    }
-}
+// request.onload = function() {
+//     if (request.readyState === XMLHttpRequest.DONE) {
+//         if (request.status === 200) {
+//             let response = request.response;
+//             console.log(response);
+//         } else {
+//             alert('Une erreur s\' est produite');
+//         }
+//     }
+// }
