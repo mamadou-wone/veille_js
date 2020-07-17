@@ -628,11 +628,43 @@
 
 //****************************** */ APPLI METEO****************************************
 
-function getWeather(ville) {
-    let apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=d25716d961a86dd8ad7a074fd248ff59&units=metric'
+// function getWeather(ville) {
+//     let apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=d25716d961a86dd8ad7a074fd248ff59&units=metric'
 
+//     let request = new XMLHttpRequest();
+//     request.open('GET', apiUrl);
+//     request.responseType = 'json';
+//     request.send();
+
+//     request.onload = function() {
+//         if (request.readyState === XMLHttpRequest.DONE) {
+//             if (request.status === 200) {
+//                 let response = request.response;
+//                 document.getElementById('temperature_label').textContent = response.main.temp_max;
+//                 document.getElementById('ville').textContent = response.name;
+//             } else {
+//                 alert('Une erreur est intervenue !! Veuillez réessayer!')
+//             }
+//         }
+//         console.log('Actualisé');
+//     }
+// }
+
+// getWeather('Dakar');
+
+
+// let changeCity = document.getElementById('changer');
+// changeCity.addEventListener('click', () => {
+//     let newCity = prompt('Changer de ville');
+//     getWeather(newCity);
+// });
+
+
+function getWeather(ville) {
+
+    const urlApi = 'http://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=d25716d961a86dd8ad7a074fd248ff59&units=metric';
     let request = new XMLHttpRequest();
-    request.open('GET', apiUrl);
+    request.open('GET', urlApi);
     request.responseType = 'json';
     request.send();
 
@@ -643,35 +675,16 @@ function getWeather(ville) {
                 document.getElementById('temperature_label').textContent = response.main.temp_max;
                 document.getElementById('ville').textContent = response.name;
             } else {
-                alert('Une erreur est intervenue !! Veuillez réessayer!')
+                alert('Une erreur est survenue :)');
             }
         }
-        console.log('Actualisé');
     }
 }
 
 getWeather('Dakar');
 
-
 let changeCity = document.getElementById('changer');
 changeCity.addEventListener('click', () => {
-    let newCity = prompt('Changer de ville');
+    let newCity = prompt('Veuillez entrez une nouvelle ville');
     getWeather(newCity);
 });
-
-
-
-// let me = new Person('boy');
-// let you = new Person('girl');
-
-// if (me.girlFriend === null && me.crushOn(you)) {
-//     try {
-//         if (me.askGirlOut(you) === 'ok') {
-//             me.happy = true;
-//         } else {
-//             me.cry();
-//         }
-//     } catch (IAlreadyHaveABoysFriendException) {
-//         me.cry();
-//     }
-// }

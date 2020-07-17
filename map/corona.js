@@ -45,3 +45,19 @@ request.onload = function() {
 // xhr.setRequestHeader("x-rapidapi-key", "0f7a7ada68msh267bc5e330be523p1a6bd2jsn584183b3a9ee");
 
 // xhr.send(data);
+
+
+// let me = new Person('boy');
+// let you = new Person('girl');
+
+// if (me.girlFriend === null && me.crushOn(you)) {
+//     try {
+//         if (me.askGirlOut(you) === 'ok') {
+//             me.happy = true;
+//         } else {
+//             me.cry();
+//         }
+//     } catch (IAlreadyHaveABoysFriendException) {
+//         me.cry();
+//     }
+// }
