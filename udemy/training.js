@@ -660,31 +660,102 @@
 // });
 
 
-function getWeather(ville) {
+// function getWeather(ville) {
 
-    const urlApi = 'http://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=d25716d961a86dd8ad7a074fd248ff59&units=metric';
-    let request = new XMLHttpRequest();
-    request.open('GET', urlApi);
-    request.responseType = 'json';
-    request.send();
+//     const urlApi = 'http://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=d25716d961a86dd8ad7a074fd248ff59&units=metric';
+//     let request = new XMLHttpRequest();
+//     request.open('GET', urlApi);
+//     request.responseType = 'json';
+//     request.send();
 
-    request.onload = function() {
-        if (request.readyState === XMLHttpRequest.DONE) {
-            if (request.status === 200) {
-                let response = request.response;
-                document.getElementById('temperature_label').textContent = response.main.temp_max;
-                document.getElementById('ville').textContent = response.name;
-            } else {
-                alert('Une erreur est survenue :)');
-            }
-        }
+//     request.onload = function() {
+//         if (request.readyState === XMLHttpRequest.DONE) {
+//             if (request.status === 200) {
+//                 let response = request.response;
+//                 document.getElementById('temperature_label').textContent = response.main.temp_max;
+//                 document.getElementById('ville').textContent = response.name;
+//             } else {
+//                 alert('Une erreur est survenue :)');
+//             }
+//         }
+//     }
+// }
+
+// getWeather('Dakar');
+
+// let changeCity = document.getElementById('changer');
+// changeCity.addEventListener('click', () => {
+//     let newCity = prompt('Veuillez entrez une nouvelle ville');
+//     getWeather(newCity);
+// });
+
+// *****************************LES PRMESSES EN JS************************************
+
+// function chargerScript(script) {
+//     return new Promise((resolve, reject) => {
+//         let element = document.createElement('script');
+//         document.head.append(element);
+//         element.src = script;
+
+//         // Je vérifie les 2 possibilités
+//         // 1-SOit la balise s'est bien chargé
+//         element.onload = () => resolve('Le script ' + script + ' a été bien charché');
+
+//         // 2 SOit la balise ne s'est pas bien chargé
+//         element.onerror = () => reject(new Error('Le script ' + script + ' ne s\'est pas chargé'));
+//     });
+// }
+// *******************Assync Await***************
+
+// async function result() {
+//     try {
+//         let scriptA = await chargerScript('test.js');
+//         console.log(scriptA);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+// result();
+
+
+
+// const promesse = chargerScript('test.js');
+// promesse.then(
+//     function result(result) {
+//         console.log(result);
+//     },
+
+//     function error(error) {
+//         console.log(error);
+//     }
+// ); //Permet d'exécuter une autre instruction
+
+
+// *********************************LES COOKIES********************************************
+let button = document.querySelector('button');
+let span = document.querySelector('span');
+
+
+function modeSombre() {
+    document.body.className = 'dark';
+    span.textContent = 'Thème clair';
+    localStorage.setItem('theme', 'sombre');
+
+}
+button.addEventListener('click', () => {
+    // console.log(document.body.classList.value);
+    if (document.body.classList.contains('dark')) {
+        document.body.className = '';
+        span.textContent = 'Thème sombre';
+        localStorage.setItem('theme', 'clair');
+    } else {
+        modeSombre();
+    }
+});
+
+if (localStorage.getItem('theme')) {
+    if (localStorage.getItem('theme') === 'sombre') {
+        modeSombre();
     }
 }
-
-getWeather('Dakar');
-
-let changeCity = document.getElementById('changer');
-changeCity.addEventListener('click', () => {
-    let newCity = prompt('Veuillez entrez une nouvelle ville');
-    getWeather(newCity);
-});
