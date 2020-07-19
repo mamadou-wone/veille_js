@@ -733,29 +733,128 @@
 
 
 // *********************************LES COOKIES********************************************
-let button = document.querySelector('button');
-let span = document.querySelector('span');
+// let button = document.querySelector('button');
+// let span = document.querySelector('span');
 
 
-function modeSombre() {
-    document.body.className = 'dark';
-    span.textContent = 'Thème clair';
-    localStorage.setItem('theme', 'sombre');
+// function modeSombre() {
+//     document.body.className = 'dark';
+//     span.textContent = 'Thème clair';
+//     localStorage.setItem('theme', 'sombre');
 
-}
-button.addEventListener('click', () => {
-    // console.log(document.body.classList.value);
-    if (document.body.classList.contains('dark')) {
-        document.body.className = '';
-        span.textContent = 'Thème sombre';
-        localStorage.setItem('theme', 'clair');
-    } else {
-        modeSombre();
+// }
+// button.addEventListener('click', () => {
+//     // console.log(document.body.classList.value);
+//     if (document.body.classList.contains('dark')) {
+//         document.body.className = '';
+//         span.textContent = 'Thème sombre';
+//         localStorage.setItem('theme', 'clair');
+//     } else {
+//         modeSombre();
+//     }
+// });
+
+// if (localStorage.getItem('theme')) {
+//     if (localStorage.getItem('theme') === 'sombre') {
+//         modeSombre();
+//     }
+// }
+// **********************************JQUERY************************************************
+
+// **************************AJAX AVEC JQUERY**********************************
+// const apiUrl = 'https://blockchain.info/ticker';
+
+// $.ajax({
+//     type: "GET",
+//     dataType: "json",
+//     url: apiUrl,
+//     success: function(response) {
+//         let h1 = document.createElement('h1');
+//         document.body.append(h1);
+//         h1.textContent = response.EUR.last;
+//     },
+//     error: () => {
+//         alert('Merci de revenir plutard');
+//     }
+// });
+
+// *****************GEOLOCALISER UN UTILISATEUR***********************************
+// if ('geolocation' in navigator) {
+//     navigator.geolocation.getCurrentPosition((position) => {
+//         console.log(position.coords);
+//     }, error);
+// } else {
+//     console.log('false');
+// }
+
+// function error() {
+//     alert('Vous avez refusé ');
+// }
+
+// ************************************FINAL PROJECT APPLI METEO*******************
+
+function getWeather(ville) {
+
+    const urlApi = 'http://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=d25716d961a86dd8ad7a074fd248ff59&units=metric';
+    let request = new XMLHttpRequest();
+    request.open('GET', urlApi);
+    request.responseType = 'json';
+    request.send();
+
+    request.onload = function() {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+                let response = request.response;
+                document.getElementById('temperature_label').textContent = response.main.temp_max;
+                document.getElementById('ville').textContent = response.name;
+            } else {
+                alert('Une erreur est survenue :)');
+            }
+        }
     }
+}
+let villeChoisit;
+
+if ('geolocation' in navigator) {
+    navigator.geolocation.watchPosition((position) => {
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+        const newApiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=d25716d961a86dd8ad7a074fd248ff59&units=metric';
+        let request = new XMLHttpRequest();
+        request.open('GET', newApiUrl);
+        request.responseType = 'json';
+        request.send();
+
+        request.onload = function() {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                if (request.status === 200) {
+                    let response = request.response;
+                    document.getElementById('temperature_label').textContent = response.main.temp_max;
+                    document.getElementById('ville').textContent = response.name;
+                } else {
+                    alert('Une erreur est survenue :)');
+                }
+            }
+        }
+    }, error, options);
+} else {
+    villeChoisit = 'New York';
+    getWeather(villeChoisit);
+}
+
+var options = {
+    enableHighAccuracy: true,
+}
+
+// getWeather(villeChoisit);
+
+function error() {
+    alert('Nous ne pouvons pas accéder à votre position');
+    getWeather('Paris');
+}
+
+let changeCity = document.getElementById('changer');
+changeCity.addEventListener('click', () => {
+    let newCity = prompt('Veuillez entrez une nouvelle ville');
+    getWeather(newCity);
 });
-
-if (localStorage.getItem('theme')) {
-    if (localStorage.getItem('theme') === 'sombre') {
-        modeSombre();
-    }
-}

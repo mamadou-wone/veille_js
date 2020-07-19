@@ -1,6 +1,7 @@
 /* THEME PERSONALISE */
 
-html,
+
+/* html,
 body {
     font-family: arial;
     min-width: 300px;
@@ -25,13 +26,11 @@ button {
 .dark button {
     background: #144098;
     color: #fff;
-}
+} */
 
 
 /* APPLI METEO */
 
-
-/* 
 html,
 body {
     background: #2980B9;
@@ -51,7 +50,7 @@ body {
 #changer {
     background: rgba(178, 223, 251, .3);
     cursor: pointer;
-} */
+}
 
 
 /* html,
