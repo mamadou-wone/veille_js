@@ -4,7 +4,7 @@ getInfo = (car) => {
     thioro.open('GET', urlApi);
     thioro.responseType = 'json';
     thioro.send();
-
+// Day Of
     thioro.onload = () => {
         if (thioro.readyState === XMLHttpRequest.DONE) {
             console.log(thioro.status);
